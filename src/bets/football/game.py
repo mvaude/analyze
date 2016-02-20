@@ -25,6 +25,17 @@ def away_win(home, away):
     """
     return home < away
 
+def draw(home, away):
+    """
+    Return true if home wins
+    >>> draw(1, 0)
+    False
+    >>> draw(0, 0)
+    True
+    >>> draw(0, 1)
+    False
+    """
+    return home == away
 class Game(object):
     """
     Class of a game with simple conditions
