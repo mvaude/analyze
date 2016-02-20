@@ -9,7 +9,8 @@ three different possibilities:
 from bet import Bet
 from football.game import (Game,
                            home_win,
-                           away_win)
+                           away_win,
+                           draw)
 
 class OneDrawTwo(Bet):
     """
@@ -37,10 +38,20 @@ class OneDrawTwo(Bet):
 
     def away(self):
         """
-        Generator for home score combinaison
+        Generator for away score combinaison
         >>> [ x for x in OneDrawTwo(3).away() ]
         [(0, 1), (0, 2), (1, 2)]
         """
         for (home, away) in Game(self.max).score_combinaison():
             if away_win(home, away):
+                yield (home, away)
+
+    def draw(self):
+        """
+        Generator for draw score combinaison
+        >>> [ x for x in OneDrawTwo(3).draw() ]
+        [(0, 0), (1, 1), (2, 2)]
+        """
+        for (home, away) in Game(self.max).score_combinaison():
+            if draw(home, away):
                 yield (home, away)
