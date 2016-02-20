@@ -6,4 +6,4 @@ class Bet(object):
     """
     Class for a Bet
     """
-    pass
+    id = 0
