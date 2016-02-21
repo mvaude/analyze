@@ -6,6 +6,7 @@ Class for Over Under Bet
 from bet import Bet
 from football.game import Game
 
+
 class OverUnder(Bet):
     """
     >>> [ x for x in OverUnder().over(0.5) ]
