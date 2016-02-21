@@ -13,10 +13,10 @@ class Bet(object):
     def __init__(self, game):
         self.game = game
 
-    def bet(self, fun, *args):
+    def bet(self, fun, **kwargs):
         """
         Generate combinaison included by bet
         """
         for (home, away) in self.game.score_combinaison():
-            if fun(home, away, *args):
+            if fun(home=home, away=away, **kwargs):
                 yield (home, away)
