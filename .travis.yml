@@ -18,9 +18,9 @@ python:
 # command to install dependencies
 
 matrix:
-  known_failures:
-    - os:
-      - osx
+  fast_finish: true
+  allow_failures:
+    - os: osx
 
 install:
   - pip install -r requirements.txt
