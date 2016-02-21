@@ -6,12 +6,12 @@ Class for Over Under Bet
 from bet import Bet
 
 
-class OverUnder(Bet):
+class HomeOverUnder(Bet):
     """
     >>> from football.game import Game
-    >>> [ score for score in OverUnder(Game(3)).over(0.5) ]
+    >>> [ score for score in HomeOverUnder(Game(3)).over(0.5) ]
     [(0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
-    >>> [ score for score in OverUnder(Game(3)).under(0.5) ]
+    >>> [ score for score in HomeOverUnder(Game(3)).under(0.5) ]
     [(0, 0)]
     """
     def __init__(self, game):
@@ -20,7 +20,7 @@ class OverUnder(Bet):
     def over(self, goals):
         """
         >>> from football.game import Game
-        >>> test = OverUnder(Game(2))
+        >>> test = HomeOverUnder(Game(2))
         >>> [ score for score in test.over(0.5)]
         [(0, 1), (1, 0), (1, 1)]
         """
@@ -31,7 +31,7 @@ class OverUnder(Bet):
     def under(self, goals):
         """
         >>> from football.game import Game
-        >>> test = OverUnder(Game(2))
+        >>> test = HomeOverUnder(Game(2))
         >>> [ score for score in test.under(0.5)]
         [(0, 0)]
         """
