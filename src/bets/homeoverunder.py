@@ -9,32 +9,33 @@ from bet import Bet
 class HomeOverUnder(Bet):
     """
     >>> from football.game import Game
-    >>> [ score for score in HomeOverUnder(Game(3)).over(0.5) ]
-    [(0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
-    >>> [ score for score in HomeOverUnder(Game(3)).under(0.5) ]
-    [(0, 0)]
+    >>> test = HomeOverUnder(Game(3))
+    >>> test.number
+    2
+    >>> [ score for score in test.bet(test.over, size=0.5) ]
+    [(1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
+    >>> [ score for score in test.bet(test.under, size=0.5) ]
+    [(0, 0), (0, 1), (0, 2)]
     """
     def __init__(self, game):
-        self.game = game
+        super(HomeOverUnder, self).__init__(game)
+        self.name = "Home Team Over Under"
+        self.number = 2
 
-    def over(self, goals):
+    @classmethod
+    def over(cls, home, away, size):
         """
-        >>> from football.game import Game
-        >>> test = HomeOverUnder(Game(2))
-        >>> [ score for score in test.over(0.5)]
-        [(0, 1), (1, 0), (1, 1)]
+        >>> HomeOverUnder('').over(1, 0, 0.5)
+        True
         """
-        for (home, away) in self.game.score_combinaison():
-            if float(home + away) > goals:
-                yield (home, away)
+        del away
+        return float(home) > size
 
-    def under(self, goals):
+    @classmethod
+    def under(cls, home, away, size):
         """
-        >>> from football.game import Game
-        >>> test = HomeOverUnder(Game(2))
-        >>> [ score for score in test.under(0.5)]
-        [(0, 0)]
+        >>> HomeOverUnder('').under(1, 0, 0.5)
+        False
         """
-        for (home, away) in self.game.score_combinaison():
-            if float(home + away) < goals:
-                yield (home, away)
+        del away
+        return float(home) < size
