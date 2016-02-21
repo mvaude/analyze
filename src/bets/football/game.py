@@ -2,6 +2,7 @@
 Class describe game and attributes and methods needed
 """
 
+
 def home_win(home, away):
     """
     Return true if home wins
