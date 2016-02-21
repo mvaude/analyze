@@ -12,6 +12,7 @@ from football.game import (Game,
                            away_win,
                            draw)
 
+
 class DoubleChance(Bet):
     """
     Class with different attributes and method:
@@ -26,6 +27,7 @@ class DoubleChance(Bet):
     def __init__(self, maxScores):
         self.max = maxScores
         self.name = 'Double Chance'
+
     def win(self):
         """
         Generator for win score combinaison

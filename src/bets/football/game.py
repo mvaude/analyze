@@ -1,6 +1,7 @@
 """
 Class describe game and attributes and methods needed
 """
+
 def home_win(home, away):
     """
     Return true if home wins
@@ -12,6 +13,7 @@ def home_win(home, away):
     False
     """
     return home > away
+
 
 def away_win(home, away):
     """
@@ -25,6 +27,7 @@ def away_win(home, away):
     """
     return home < away
 
+
 def draw(home, away):
     """
     Return true if home wins
@@ -36,6 +39,8 @@ def draw(home, away):
     False
     """
     return home == away
+
+
 class Game(object):
     """
     Class of a game with simple conditions
@@ -49,7 +54,9 @@ class Game(object):
         """
         Generate a score combination
         >>> [ x for x in Game(3).score_combinaison() ]
-        [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
+        ... # doctest: +NORMALIZE_WHITESPACE
+        [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1),
+        (1, 2), (2, 0), (2, 1), (2, 2)]
         """
         for home in range(self.max):
             for away in range(self.max):

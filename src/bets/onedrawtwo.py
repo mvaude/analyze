@@ -12,6 +12,7 @@ from football.game import (Game,
                            away_win,
                            draw)
 
+
 class OneDrawTwo(Bet):
     """
     Class with different attributes and method:
@@ -26,6 +27,7 @@ class OneDrawTwo(Bet):
     def __init__(self, maxScores):
         self.max = maxScores
         self.name = '1-N-2'
+
     def home(self):
         """
         Generator for home score combinaison
